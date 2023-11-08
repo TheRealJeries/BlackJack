@@ -90,6 +90,63 @@ int card_to_string(char *buffer, size_t buffer_size, card_t *card) {
         log_error(__func__, "buffer overflow prevented");
     }
 
-    snprintf(buffer, buffer_size, "%s of %s", rank, suit);
+    snprintf(buffer, buffer_size, "%s (%d) of %s", rank, card_value(card), suit);
     return SUCCESS;
 }
+
+// Returns the card value as an integer or -1 in case of an error
+int card_value(card_t *card) {
+    int res = -1;
+    if (!card) {
+        log_error(__func__, "card is NULL");
+        return res;
+    }
+
+    switch (card->rank) {
+        case Two:
+            res = 2;
+            break;
+        case Three:
+            res = 3;
+            break;
+        case Four:
+            res = 4;
+            break;
+        case Five:
+            res = 5;
+            break;
+        case Six:
+            res = 6;
+            break;
+        case Seven:
+            res = 7;
+            break;
+        case Eight:
+            res = 8;
+            break;
+        case Nine:
+            res = 9;
+            break;
+        case Ten:
+            res = 10;
+            break;
+        case Jack:
+            res = 10;
+            break;
+        case Queen:
+            res = 10;
+            break;
+        case King:
+            res = 10;
+            break;
+        case Ace:
+            res = 11;
+            break;
+        default:
+            log_error(__func__, "Unexpected card rank");
+            res = -1;
+    }
+
+    return res;
+}
+

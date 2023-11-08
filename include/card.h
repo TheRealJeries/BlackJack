@@ -32,8 +32,28 @@
 
 #endif
 
-enum suit_e {Clubs, Diamonds, Hearts, Spades};
-enum rank_e {Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King, Ace};
+enum suit_e {
+    Clubs,
+    Diamonds,
+    Hearts,
+    Spades
+};
+
+enum rank_e {
+    Two,
+    Three,
+    Four,
+    Five,
+    Six,
+    Seven,
+    Eight,
+    Nine,
+    Ten,
+    Jack,
+    Queen,
+    King,
+    Ace
+};
 
 typedef struct card_s {
     enum rank_e rank;
@@ -43,5 +63,8 @@ typedef struct card_s {
 
 // This function assumes an empty buffer
 int card_to_string(char *buffer, size_t buffer_size, card_t *card);
+
+// This function returns the value of the card as an int
+int card_value(card_t *card);
 
 #endif
