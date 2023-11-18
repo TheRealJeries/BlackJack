@@ -13,4 +13,5 @@ typedef struct deck_s {
 
 int init_deck(deck_t *deck);
 int shuffle_deck(deck_t *deck);
+int cut_deck(void);
 #endif

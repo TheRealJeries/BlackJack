@@ -54,3 +54,13 @@ int shuffle_deck(deck_t *deck) {
 
     return SUCCESS;
 }
+
+int cut_deck(void) {
+    int last_card = 0;
+    srand(time(NULL));
+    last_card = rand() % (CARDS_PER_DECK);
+    if (last_card < CARDS_PER_DECK / 2) {
+        last_card = CARDS_PER_DECK - last_card;
+    }
+    return last_card;
+}
